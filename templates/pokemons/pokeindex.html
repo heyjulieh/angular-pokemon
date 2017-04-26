@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <form class="form-horizontal" ng-submit="pokemonsIndexCtrl.createPokemon()">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Add a New Pokemon!</legend>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Pokemon Name</label>
+            <div class="col-md-4">
+            <input id="name" ng-model="pokemonsIndexCtrl.newPokemon.name" type="text" class="form-control input-md" required="">
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Pokedex Number</label>
+            <div class="col-md-4">
+            <input ng-model="pokemonsIndexCtrl.newPokemon.pokedex" type="text" class="form-control input-md">
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Evolves from</label>
+            <div class="col-md-4">
+            <input ng-model="pokemonsIndexCtrl.newPokemon.evolves_from" type="text" class="form-control input-md">
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Save Pokemon</label>
+            <div class="col-md-4">
+              <button class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <input type="text" class="form-control" ng-model="searchText" placeholder="Search Pokemons">
+  <div ng-repeat="pokemon in pokemonsIndexCtrl.pokemons | orderBy: 'name' | filter: searchText" class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class='row'>
+            <div class="col-md-3 col-xs-12 thumbnail">
+              <img src={{pokemon.image}} alt="pokemon image">
+            </div>
+
+            <div class="col-md-9 col-xs-12">
+              <ul class="list-group form-inline">
+                <li class="list-group-item">
+                  <h4 class='inline-header'>Pokemon Name:</h4>
+                  <span ng-hide="editing"><a ng-href="pokemons/{{pokemon._id}}">{{pokemon.name}}</a></span>
+                  <input ng-show="editing" ng-model="pokemon.name" type="text" class="form-control input-md">
+                </li>
+
+                <li class="list-group-item">
+                  <h4 class='inline-header'>Pokedex Number:</h4>
+                  <span ng-hide="editing">{{pokemon.pokedex}}</span>
+                  <input ng-show="editing" ng-model="pokemon.pokedex" type="text" class="form-control input-md">
+                </li>
+
+                <li class="list-group-item">
+                  <h4 class='inline-header'>Evolves From:</h4>
+                  <span ng-hide="editing">{{pokemon.evolves_from}}</span>
+                  <input ng-show="editing" ng-model="pokemon.evolves_from" type="text" class="form-control input-md">
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class='panel-footer'>
+            <div class='panel-footer'>
+              <button class='btn btn-danger' ng-click="pokemonsIndexCtrl.deletePokemon(pokemon)">Delete Pokemon</button>
+              <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Pokemon</button>
+              <button class='btn btn-success' ng-show="editing" ng-click="pokemonsIndexCtrl.editPokemon(pokemon); editing = false">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
