@@ -5,10 +5,10 @@
       <form class="form-horizontal" ng-submit="pokemonsIndexCtrl.createPokemon()">
         <fieldset>
 
-          <!-- Form Name -->
+
           <legend>Add a New Pokemon!</legend>
 
-          <!-- Text input-->
+
           <div class="form-group">
             <label class="col-md-4 control-label">Pokemon Name</label>
             <div class="col-md-4">
@@ -16,7 +16,7 @@
             </div>
           </div>
 
-          <!-- Text input-->
+
           <div class="form-group">
             <label class="col-md-4 control-label">Pokedex Number</label>
             <div class="col-md-4">
@@ -24,7 +24,7 @@
             </div>
           </div>
 
-          <!-- Text input-->
+
           <div class="form-group">
             <label class="col-md-4 control-label">Evolves from</label>
             <div class="col-md-4">
@@ -32,7 +32,7 @@
             </div>
           </div>
 
-          <!-- Button -->
+
           <div class="form-group">
             <label class="col-md-4 control-label">Save Pokemon</label>
             <div class="col-md-4">
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <input type="text" class="form-control" ng-model="searchText" placeholder="Search Pokemons">
+  <input type="text" class="form-control" ng-model="searchText" placeholder="Search Pokemon">
   <div ng-repeat="pokemon in pokemonsIndexCtrl.pokemons | orderBy: 'name' | filter: searchText" class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
